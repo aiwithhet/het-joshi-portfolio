@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Het Joshi — Operations, AI Automation & Business Analytics</title>
+<meta name="description" content="Het Joshi builds practical operations analytics, workflow automation, AI-assisted systems and data tools using Google Apps Script, Sheets, APIs, Python and modern web technologies.">
+<meta name="theme-color" content="#090b09">
+<style>
+:root{--bg:#090b09;--panel:#111511;--panel2:#0d100d;--line:#293029;--txt:#f5f5ef;--muted:#a0aaa1;--lime:#adff78;--cream:#f1e9dc;--ink:#111511;--max:1180px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--txt);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55;letter-spacing:-.01em;overflow-x:hidden}a{color:inherit;text-decoration:none}.shell{width:min(calc(100% - 38px),var(--max));margin:auto}
+nav{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #202520;position:relative;z-index:5}.brand{display:flex;align-items:center;gap:11px;font-weight:850;min-width:0}.mark{width:38px;height:38px;border-radius:10px;background:var(--lime);color:#101510;display:grid;place-items:center;font-weight:950;flex:0 0 auto}.brand span:last-child{min-width:0}.brand small{display:block;color:#7d887f;font-size:10px;letter-spacing:.13em;text-transform:uppercase;white-space:normal}.links{display:flex;gap:25px;color:#bbc2bc;font-size:13px}.links a:hover{color:var(--lime)}.pill,.btn{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:999px;padding:11px 16px;font-size:13px;font-weight:750;transition:.2s}.pill:hover,.btn:hover{transform:translateY(-2px);border-color:#49534a}.btn.primary{background:var(--lime);color:#101510;border-color:var(--lime)}
+.hero{min-height:700px;padding:76px 0 68px;display:grid;grid-template-columns:1.08fr .92fr;gap:64px;align-items:center}.eyebrow,.kicker{color:var(--lime);font-size:11px;letter-spacing:.17em;text-transform:uppercase;font-weight:850}.eyebrow{display:flex;align-items:center;gap:10px}.dot{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 6px rgba(173,255,120,.08);flex:0 0 auto}h1{font-size:clamp(54px,7vw,90px);line-height:.94;letter-spacing:-.07em;margin:23px 0 27px;max-width:780px;overflow-wrap:anywhere}h1 em{font-style:normal;color:var(--lime)}.lede{font-size:18px;color:#b8c0b9;max-width:720px}.actions{display:flex;gap:11px;flex-wrap:wrap;margin:31px 0 39px}.proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:660px}.proof div{padding:0 22px;border-right:1px solid var(--line);min-width:0}.proof div:first-child{padding-left:0}.proof div:last-child{border:0}.proof strong{display:block;font-size:26px;letter-spacing:-.05em}.proof span{display:block;color:#7f8981;font-size:10px;letter-spacing:.08em;text-transform:uppercase;line-height:1.45;overflow-wrap:anywhere}
+.terminal{border:1px solid #313831;border-radius:23px;background:linear-gradient(145deg,#151915,#0d100d);padding:18px;box-shadow:0 30px 90px #0008;overflow:hidden}.termbar{display:flex;gap:7px;align-items:center;border-bottom:1px solid #252b25;padding-bottom:14px}.termbar i{width:8px;height:8px;border-radius:50%;background:#3a433b}.termbar span{margin-left:auto;color:#687169;font:10px ui-monospace,monospace}.code{padding-top:16px;font:11px/1.95 ui-monospace,SFMono-Regular,Menlo,monospace;color:#afb8b0;overflow-wrap:anywhere}.ok{color:#dfffd0}.cmd{color:var(--lime)}.dim{color:#637064}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:15px}.stats div{border:1px solid #222822;background:#0c0e0c;border-radius:12px;padding:11px;min-width:0}.stats b{display:block;color:var(--lime);font-size:15px;overflow-wrap:anywhere}.stats span{font-size:9px;color:#768078;text-transform:uppercase;letter-spacing:.08em;overflow-wrap:anywhere}
+.ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}.ticker div{padding:16px 0;white-space:nowrap;color:#aab2ab;font-size:11px;letter-spacing:.13em;text-transform:uppercase}.ticker b{color:var(--lime);margin:0 14px}
+.block{padding:92px 0}.head{display:grid;grid-template-columns:1fr .75fr;gap:45px;align-items:end;margin-bottom:39px}.head h2{font-size:clamp(41px,5vw,65px);line-height:1.01;letter-spacing:-.058em;margin:13px 0 0}.head p{color:var(--muted);font-size:16px;margin:0;max-width:490px;justify-self:end}.projects{display:grid;grid-template-columns:1fr 1fr;gap:16px}.case{border:1px solid var(--line);border-radius:22px;background:var(--panel);overflow:hidden;transition:.22s;min-width:0}.case:hover{transform:translateY(-4px);border-color:#465047}.case.wide{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr}.visual{min-height:225px;border-bottom:1px solid var(--line);background:radial-gradient(circle at 75% 20%,rgba(173,255,120,.14),transparent 34%),linear-gradient(145deg,#171b17,#0d100d);padding:24px;display:grid;place-items:center;overflow:hidden}.wide .visual{border-right:1px solid var(--line);border-bottom:0;min-height:370px}.arch{width:100%;display:grid;grid-template-columns:1fr 25px 1fr 25px 1fr;align-items:center}.node{min-height:76px;border:1px solid #3a443b;border-radius:13px;display:grid;place-items:center;text-align:center;padding:9px;font:10px/1.5 ui-monospace,monospace;overflow-wrap:anywhere}.node.hot{border-color:#6d9858;color:var(--lime)}.arr{height:1px;background:#566057}.arr:after{content:'›';display:block;text-align:right;transform:translateY(-12px);color:#7e8a80}.dashboard{width:100%;display:grid;grid-template-columns:1.2fr .8fr;gap:10px}.dashbox{border:1px solid #354035;border-radius:15px;background:#0d110d;padding:14px}.dashbox b{font:10px ui-monospace;color:var(--lime)}.bars{height:120px;display:flex;gap:7px;align-items:end;margin-top:15px}.bars i{display:block;flex:1;background:#30402f;border-radius:6px 6px 2px 2px}.bars i:nth-child(1){height:44%}.bars i:nth-child(2){height:72%}.bars i:nth-child(3){height:58%}.bars i:nth-child(4){height:88%;background:var(--lime)}.bars i:nth-child(5){height:70%}.metric{display:grid;gap:8px;margin-top:15px}.metric span{display:flex;justify-content:space-between;gap:8px;border-top:1px solid #273027;padding-top:8px;font:9px ui-monospace;color:#aeb7af}.metric strong{color:var(--lime)}.copy{padding:25px;min-width:0}.meta{display:flex;justify-content:space-between;gap:10px;color:#788179;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;flex-wrap:wrap}.status{border:1px solid #374238;border-radius:999px;padding:5px 8px;color:#d7f4cc}.copy h3{font-size:27px;letter-spacing:-.045em;margin:0 0 9px;overflow-wrap:anywhere}.copy p{color:#aeb6af;font-size:14px;margin:0 0 18px}.impact{border-left:2px solid var(--lime);padding-left:12px;margin:17px 0;color:#d7ded8;font-size:13px}.tags{display:flex;flex-wrap:wrap;gap:7px}.tags span{font-size:10px;border:1px solid #2b322c;border-radius:999px;padding:6px 8px;color:#c4cbc4}.open{display:inline-block;margin-top:20px;color:var(--lime);font-size:12px;font-weight:850}
+.auto{background:var(--cream);color:var(--ink)}.auto .kicker{color:#4d703b}.auto .head p{color:#596159}.labs{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.lab{background:#f8f3ea;border:1px solid #cac7be;border-radius:19px;padding:21px;min-height:244px;display:flex;flex-direction:column;min-width:0}.lab small{font:10px ui-monospace,monospace;color:#697168}.lab h3{font-size:20px;line-height:1.15;letter-spacing:-.035em;margin:23px 0 11px;overflow-wrap:anywhere}.lab p{font-size:13px;color:#5b635c}.flow{margin-top:auto;display:flex;gap:5px;align-items:center;flex-wrap:wrap}.flow span{font:9px ui-monospace,monospace;border:1px solid #cbd0ca;background:#fff;border-radius:6px;padding:5px 6px}.flow b{font-size:10px;color:#7b837c}
+.support{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:16px}.support article{border:1px solid var(--line);border-radius:18px;background:#0e110e;padding:21px;min-width:0}.support small{color:#778178;font:9px ui-monospace,monospace;text-transform:uppercase}.support h3{font-size:20px;margin:14px 0 8px;letter-spacing:-.03em;overflow-wrap:anywhere}.support p{font-size:13px;color:#98a299;margin:0 0 14px}.support a{font-size:12px;color:var(--lime);font-weight:800}
+.case-detail{border:1px solid var(--line);border-radius:22px;background:#0d100d;padding:28px;margin-top:16px;display:grid;grid-template-columns:.8fr 1.2fr;gap:34px}.case-detail h3{font-size:32px;line-height:1.05;letter-spacing:-.045em;margin:9px 0 12px}.case-detail p{color:#98a299;font-size:14px}.detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.detail-grid div{border:1px solid #252d26;border-radius:14px;padding:14px;background:#0b0e0b}.detail-grid b{display:block;color:var(--lime);font-size:19px}.detail-grid span{display:block;color:#7c867e;font-size:10px;margin-top:5px;text-transform:uppercase;letter-spacing:.08em}.detail-actions{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+.exp{display:grid;grid-template-columns:.7fr 1.3fr;gap:65px}.expintro h2{font-size:48px;line-height:1.02;letter-spacing:-.056em;margin:13px 0 20px}.expintro p{color:var(--muted)}.timeline{border-top:1px solid var(--line)}.role{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}.role>span{font:10px ui-monospace,monospace;color:#78817a}.role h3{font-size:18px;margin:0 0 4px}.role b{color:#c7cec8;font-size:13px}.role p{color:#8f9991;font-size:13px;margin:7px 0 0}.role.now h3{color:var(--lime)}
+.stack{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:52px}.stack article{border:1px solid var(--line);border-radius:17px;padding:19px;background:#0e110e;min-width:0}.stack small{color:#69736b;font:9px ui-monospace,monospace}.stack h3{font-size:17px;margin:15px 0 8px}.stack p{font-size:12px;color:#909a92;margin:0;overflow-wrap:anywhere}.strip{margin-top:13px;border:1px solid var(--line);border-radius:16px;padding:15px;display:flex;gap:8px;flex-wrap:wrap}.strip span{font:9px ui-monospace,monospace;color:#b6beb7;border:1px solid #2a312b;border-radius:999px;padding:6px 8px}
+.contact{padding:90px 0;background:var(--lime);color:#101510}.contactin{display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:end}.contact .kicker{color:#314b25}.contact h2{font-size:clamp(43px,5.5vw,70px);line-height:.98;letter-spacing:-.06em;margin:13px 0 17px;overflow-wrap:anywhere}.contact p{max-width:700px;color:#32412f}.contactlinks{display:flex;flex-direction:column;align-items:flex-end;gap:10px;min-width:0}.contactlinks a{font-weight:850;border-bottom:1px solid #425f36;padding-bottom:4px;overflow-wrap:anywhere;max-width:100%}footer{min-height:85px;display:flex;align-items:center;justify-content:space-between;color:#78827a;font-size:11px;gap:20px}.footlinks{display:flex;gap:16px}
+@media(max-width:900px){.links{display:none}.hero{grid-template-columns:1fr;min-height:auto;padding-top:55px}.terminal{max-width:700px}.head,.exp,.contactin,.case-detail{grid-template-columns:1fr}.head p{justify-self:start}.labs,.support{grid-template-columns:1fr 1fr}.stack{grid-template-columns:1fr 1fr}.case.wide{grid-template-columns:1fr}.wide .visual{border-right:0;border-bottom:1px solid var(--line);min-height:280px}.contactlinks{align-items:flex-start}}
+@media(max-width:620px){.shell{width:min(calc(100% - 26px),var(--max))}nav{height:70px}.pill{display:none}.brand small{font-size:8.5px;letter-spacing:.08em}.hero{padding:48px 0 54px;gap:38px}h1{font-size:clamp(44px,14vw,58px);line-height:.96}.lede{font-size:16px}.proof{grid-template-columns:repeat(2,minmax(0,1fr));gap:0}.proof div{padding:12px 12px 12px 0;border-right:0;border-bottom:1px solid var(--line)}.proof div:nth-child(2){padding-left:12px}.proof div:last-child{grid-column:span 2;border-bottom:0;padding-top:16px}.projects{grid-template-columns:1fr}.case.wide{grid-column:auto}.arch{grid-template-columns:1fr;gap:7px}.arr{width:1px;height:14px;margin:auto}.arr:after{display:none}.dashboard{grid-template-columns:1fr}.labs,.support,.stack,.detail-grid{grid-template-columns:1fr}.role{grid-template-columns:88px 1fr;gap:13px}.block{padding:72px 0}.head h2{font-size:43px}.terminal{padding:14px}.code{font-size:10px}.stats{grid-template-columns:1fr}.ticker div{font-size:10px}.copy{padding:21px}.copy h3{font-size:24px}.case-detail{padding:21px}.contact{padding:72px 0}footer{padding:22px 0;align-items:flex-start;flex-direction:column}.contactlinks a{font-size:14px}}
+</style>
+</head>
+<body>
+<main id="top">
+<nav class="shell">
+  <a class="brand" href="#top"><span class="mark">HJ</span><span>Het Joshi<small>operations · automation · analytics</small></span></a>
+  <div class="links"><a href="#work">Projects</a><a href="#automations">Automations</a><a href="#experience">Experience</a><a href="#stack">Stack</a></div>
+  <a class="pill" href="mailto:hetjoshiwork13@outlook.com">Let's talk ↗</a>
+</nav>
+
+<section class="hero shell">
+  <div>
+    <div class="eyebrow"><i class="dot"></i>Operations × AI Automation × Business Analytics</div>
+    <h1>I turn operational friction into <em>data, automation & AI systems.</em></h1>
+    <p class="lede">I’m an operations professional with 4+ years of real workflow experience across UAE and Australian service environments. I build practical systems for structured data capture, reporting, tracking, decision support and AI-assisted automation.</p>
+    <div class="actions"><a class="btn primary" href="#work">See the projects ↓</a><a class="btn" href="mailto:hetjoshiwork13@outlook.com">Get in touch ↗</a></div>
+    <div class="proof">
+      <div><strong>4+</strong><span>years in real<br>operations</span></div>
+      <div><strong>10+</strong><span>practical systems<br>built</span></div>
+      <div><strong>UAE + AU</strong><span>cross-border<br>workflow context</span></div>
+    </div>
+  </div>
+  <div class="terminal">
+    <div class="termbar"><i></i><i></i><i></i><span>portfolio-signal.txt</span></div>
+    <div class="code">
+      <div><span class="cmd">$ show --work business-impact</span></div>
+      <div><span class="ok">✓ DATA</span> &nbsp;Marketplace Supply & Ops Analytics</div>
+      <div><span class="ok">✓ AUTO</span> &nbsp;Recruitment Workflow + Hiring Dashboard</div>
+      <div><span class="ok">✓ PIPE</span> &nbsp;Jotform → Structured Reporting</div>
+      <div><span class="ok">✓ AUTO</span> &nbsp;Gmail → Operational Tracker</div>
+      <div><span class="ok">✓ AUTO</span> &nbsp;24h Customer Feedback Flow</div>
+      <div><span class="ok">✓ FLOW</span> &nbsp;Booking Intake + Human Approval</div>
+      <div><span class="ok">✓ AI</span> &nbsp;&nbsp;&nbsp;AI Voice Lead Workflow</div>
+      <div><span class="ok">✓ LIVE</span> &nbsp;Qwifly Memory Room</div>
+      <div class="dim">// operations thinking + automation + analytics</div>
+    </div>
+    <div class="stats"><div><b>Apps Script</b><span>workflow automation</span></div><div><b>Sheets / Excel</b><span>data & reporting</span></div><div><b>APIs + AI</b><span>integration layer</span></div></div>
+  </div>
+</section>
+
+<div class="ticker"><div>OPERATIONS ANALYTICS <b>✦</b> WORKFLOW AUTOMATION <b>✦</b> GOOGLE APPS SCRIPT <b>✦</b> DATA PIPELINES <b>✦</b> AI WORKFLOWS <b>✦</b> PROCESS IMPROVEMENT <b>✦</b> API INTEGRATIONS</div></div>
+
+<section class="block shell" id="work">
+  <div class="head">
+    <div><span class="kicker">01 / SELECTED CASE STUDIES</span><h2>Projects built around real business workflows.</h2></div>
+    <p>The strongest work in my portfolio sits where operations, data and automation meet: understand the process, structure the information, remove repetitive work, and make the next decision clearer.</p>
+  </div>
+  <div class="projects">
+    <article class="case wide">
+      <div class="visual">
+        <div class="dashboard">
+          <div class="dashbox"><b>SUPPLY PRESSURE BY HOUR</b><div class="bars"><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="dashbox"><b>30-DAY REVIEW</b><div class="metric"><span>rides <strong>12,000</strong></span><span>missed <strong>521</strong></span><span>cities <strong>3</strong></span><span>output <strong>priorities</strong></span></div></div>
+        </div>
+      </div>
+      <div class="copy">
+        <div class="meta"><span>01 · Operations analytics</span><span class="status">Case Study</span></div>
+        <h3>Marketplace Supply & Operations Analytics</h3>
+        <p>Analysed a synthetic 30-day / 12,000-ride mobility dataset by city, zone and hour to surface recurring supply gaps, missed-ride patterns and assignment-time pressure.</p>
+        <div class="impact">Translated ride-level data into a prioritised operating view for Supply and Ops: where the problem repeats, when it happens, and what action should be reviewed first.</div>
+        <div class="tags"><span>Operations Analytics</span><span>Data Analysis</span><span>KPI Design</span><span>Synthetic Data</span><span>Decision Support</span></div>
+        <a class="open" href="marketplace-analysis.html">Open full case study ↗</a>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="visual"><div class="arch"><div class="node">Quiz + applicant<br>data</div><div class="arr"></div><div class="node hot">Shortlist logic<br>Apps Script</div><div class="arr"></div><div class="node">Interview + cost<br>dashboard</div></div></div>
+      <div class="copy">
+        <div class="meta"><span>02 · HR operations</span><span class="status">Automation</span></div>
+        <h3>Recruitment Workflow + Hiring Dashboard</h3>
+        <p>Combined candidate quiz data, shortlist logic, interview tracking and hiring-cost visibility into one structured Google Sheets operating workflow.</p>
+        <div class="impact">One view for candidate movement, decision status and recruitment spend instead of scattered manual tracking.</div>
+        <div class="tags"><span>Google Sheets</span><span>Apps Script</span><span>Workflow Logic</span><span>Dashboard</span></div>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="visual"><div class="arch"><div class="node">Jotform<br>submission</div><div class="arr"></div><div class="node hot">Clean + structure<br>records</div><div class="arr"></div><div class="node">Tracker +<br>reporting</div></div></div>
+      <div class="copy">
+        <div class="meta"><span>03 · Data pipeline</span><span class="status">Automation</span></div>
+        <h3>Jotform → Structured Reporting Pipeline</h3>
+        <p>Automated form submissions into central tracking sheets to reduce copy-paste, standardise records and simplify status follow-up and reporting.</p>
+        <div class="impact">Turns incoming form data into a consistent operational dataset that is easier to search, audit and report.</div>
+        <div class="tags"><span>Jotform</span><span>Google Sheets</span><span>Data Cleaning</span><span>Process Automation</span></div>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="visual"><div class="arch"><div class="node">Gmail label<br>applied</div><div class="arr"></div><div class="node hot">Apps Script<br>extracts fields</div><div class="arr"></div><div class="node">Searchable ops<br>tracker</div></div></div>
+      <div class="copy">
+        <div class="meta"><span>04 · Email operations</span><span class="status">Automation</span></div>
+        <h3>Gmail Labels → Operational Tracker</h3>
+        <p>Created an Apps Script workflow that converts labelled emails into structured Google Sheets records for searchable tracking, follow-up and operational visibility.</p>
+        <div class="impact">Useful when important work arrives through email but needs to become structured data instead of staying trapped in an inbox.</div>
+        <div class="tags"><span>Gmail</span><span>Apps Script</span><span>Google Sheets</span><span>Structured Tracking</span></div>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="visual"><div class="arch"><div class="node">Incoming<br>booking</div><div class="arr"></div><div class="node hot">Extract + validate<br>key details</div><div class="arr"></div><div class="node">Human approval<br>then action</div></div></div>
+      <div class="copy">
+        <div class="meta"><span>05 · Workflow design</span><span class="status">Design</span></div>
+        <h3>Booking Intake + Human Approval Workflow</h3>
+        <p>Designed a safer automation pattern for extracting booking details from incoming messages, validating the required fields, routing through human approval, and reducing repetitive booking-entry work.</p>
+        <div class="impact">Keeps human control where operational mistakes matter while still removing repetitive data-entry steps.</div>
+        <div class="tags"><span>Workflow Design</span><span>LLM Extraction</span><span>Human-in-the-loop</span><span>API Ready</span></div>
+      </div>
+    </article>
+  </div>
+
+  <div class="case-detail" id="marketplace-details">
+    <div><span class="kicker">CASE STUDY SIGNAL</span><h3>Analytics that ends with an operational decision.</h3><p>I built the mobility case study around a real question an operations team could ask: where are rides becoming harder to assign, how often is the problem repeating, and where should Supply/Ops focus first?</p><div class="detail-actions"><a class="btn primary" href="marketplace-analysis.html">Explore the analysis ↗</a></div></div>
+    <div class="detail-grid"><div><b>12,000</b><span>synthetic rides analysed</span></div><div><b>30 days</b><span>historical review window</span></div><div><b>City → Zone → Hour</b><span>analysis drill-down</span></div><div><b>Action list</b><span>final decision output</span></div></div>
+  </div>
+</section>
+
+<section class="block auto" id="automations">
+  <div class="shell">
+    <div class="head"><div><span class="kicker">02 / AUTOMATION SYSTEMS</span><h2>Small systems that remove repetitive work.</h2></div><p>I prefer automations with a clear trigger, clear logic and clear business outcome—especially where data needs to move cleanly between forms, email, spreadsheets and people.</p></div>
+    <div class="labs">
+      <article class="lab"><small>AUTO / 01</small><h3>24-Hour Customer Feedback Flow</h3><p>Delayed post-purchase follow-up that asks for feedback while keeping the response connected to the customer’s product experience.</p><div class="flow"><span>Purchase</span><b>→</b><span>24h delay</span><b>→</b><span>Email</span><b>→</b><span>Feedback</span></div></article>
+      <article class="lab"><small>AUTO / 02</small><h3>Operational Reporting Scripts</h3><p>Apps Script and Python workflows that reduce repetitive documentation, recurring reporting, admin follow-up and manual summary work.</p><div class="flow"><span>Raw data</span><b>→</b><span>Transform</span><b>→</b><span>Report</span></div></article>
+      <article class="lab"><small>AI / 03</small><h3>AI Voice Lead Workflow</h3><p>Service-business voice agent demo that handles an inbound enquiry, captures key lead details and turns the conversation into structured follow-up data.</p><div class="flow"><span>Call</span><b>→</b><span>AI conversation</span><b>→</b><span>Lead record</span></div></article>
+      <article class="lab"><small>AUTO / 04</small><h3>Employee Birthday Reminder</h3><p>Scheduled employee-date checks that remove manual remembering and trigger timely reminders from a central employee sheet.</p><div class="flow"><span>Employee sheet</span><b>→</b><span>Date check</span><b>→</b><span>Reminder</span></div></article>
+      <article class="lab"><small>AUTO / 05</small><h3>Candidate Quiz Aggregator</h3><p>Brings quiz responses into a structured candidate view so screening information can be compared consistently instead of reviewed across separate submissions.</p><div class="flow"><span>Quiz data</span><b>→</b><span>Aggregate</span><b>→</b><span>Candidate view</span></div></article>
+      <article class="lab"><small>FLOW / 06</small><h3>Feedback Email Automation</h3><p>Automated customer follow-up logic that connects an operational event with a timely, consistent communication step.</p><div class="flow"><span>Trigger</span><b>→</b><span>Rule</span><b>→</b><span>Email</span><b>→</b><span>Track</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="block shell" id="supporting-work">
+  <div class="head"><div><span class="kicker">03 / ADDITIONAL SHIPPED WORK</span><h2>Broader proof that I can build and ship.</h2></div><p>These are supporting projects—not the main career positioning—but they show end-to-end execution, data handling, deployment and technical problem solving.</p></div>
+  <div class="support">
+    <article><small>LIVE PRODUCT</small><h3>Qwifly — Memory Room</h3><p>Personalized digital gifting product with structured onboarding, media uploads, protected links, cloud storage, payments and interactive 3D scenes.</p><div class="tags"><span>Next.js</span><span>TypeScript</span><span>Supabase</span><span>Payments</span></div><a href="https://www.qwifly.com" target="_blank" rel="noreferrer">Open live product ↗</a></article>
+    <article><small>LIVE DATA PLATFORM</small><h3>Sports Research Data Platform</h3><p>Participant data capture, direct photo attachments, admin review, structured storage and export into master Excel plus participant-wise folders.</p><div class="tags"><span>Supabase</span><span>File Uploads</span><span>Admin Workflow</span><span>Excel Export</span></div><a href="https://karate-study-collector.vercel.app" target="_blank" rel="noreferrer">Open collector ↗</a></article>
+    <article><small>PROTOTYPE</small><h3>Batch Image Privacy Tool</h3><p>Python + OpenCV workflow for privacy-sensitive research image sets: detect faces, mask both eyes, process batches and preserve folder structure.</p><div class="tags"><span>Python</span><span>OpenCV</span><span>Batch Processing</span></div><a href="https://eye-mask-batch-production.up.railway.app" target="_blank" rel="noreferrer">View deployment ↗</a></article>
+  </div>
+</section>
+
+<section class="block shell" id="experience">
+  <div class="exp">
+    <div class="expintro"><span class="kicker">04 / EXPERIENCE</span><h2>I learned the workflow before I automated it.</h2><p>My technical work is grounded in real operations: bookings, vendors, compliance, recruitment, forms, inboxes, reporting, customer communication and time-sensitive exceptions.</p></div>
+    <div class="timeline">
+      <article class="role now"><span>2026 — NOW</span><div><h3>Stonehill Solutions Pvt. Ltd.</h3><b>Operations Executive · UAE B2B Mobility Support</b><p>Coordinate vendor-facing booking workflows supporting Zofeur’s UAE operations, including issue resolution, exception handling, time-sensitive follow-up and structured operational records.</p></div></article>
+      <article class="role"><span>2024 — 2025</span><div><h3>Santecrefast</h3><b>Compliance & Operations</b><p>Supported Australian service workflows across Caremaster CRM, Jotform, SharePoint, Excel/Google Sheets, Teams/Outlook and Xero, including documentation, tracking and process improvement.</p></div></article>
+      <article class="role"><span>2023 — 2024</span><div><h3>TTEC</h3><b>Sales Chat Executive</b><p>Handled high-volume real-time customer communication for an international business environment.</p></div></article>
+      <article class="role"><span>2021 — 2023</span><div><h3>SUMS Corpsolutions · Shloka Business Group</h3><b>Operations & Administration</b><p>Scheduling, documentation, recruitment support, coordination and the operational foundation that later shaped my automation work.</p></div></article>
+    </div>
+  </div>
+
+  <div class="stack" id="stack">
+    <article><small>01 / AUTOMATE</small><h3>Workflow automation</h3><p>Google Apps Script · Zapier · Make · n8n · workflow logic · prompt engineering</p></article>
+    <article><small>02 / DATA</small><h3>Analytics & reporting</h3><p>Google Sheets · Excel · dashboards · data cleaning · KPI tracking · SQL foundations</p></article>
+    <article><small>03 / CONNECT</small><h3>Systems & integrations</h3><p>Jotform · Gmail · REST APIs · CRM workflows · structured data pipelines · Supabase</p></article>
+    <article><small>04 / BUILD</small><h3>Technical delivery</h3><p>Python · Next.js · TypeScript · Git · Vercel · Railway · debugging</p></article>
+  </div>
+  <div class="strip"><span>Marketplace Analytics</span><span>Recruitment Dashboard</span><span>Jotform Pipeline</span><span>Gmail Tracker</span><span>Feedback Automation</span><span>Booking Approval</span><span>AI Voice Agent</span><span>Qwifly</span><span>Research Platform</span><span>Image Privacy</span></div>
+</section>
+
+<section class="contact">
+  <div class="shell contactin">
+    <div><span class="kicker">OPEN TO GLOBAL · REMOTE · RELOCATION</span><h2>Operations experience, with an automation and analytics edge.</h2><p>I’m interested in roles where I can improve workflows, build internal tools, structure messy data and help teams use automation or AI in practical, measurable ways.</p></div>
+    <div class="contactlinks"><a href="mailto:hetjoshiwork13@outlook.com">hetjoshiwork13@outlook.com ↗</a><a href="https://github.com/aiwithhet" target="_blank" rel="noreferrer">github.com/aiwithhet ↗</a></div>
+  </div>
+</section>
+</main>
+<footer class="shell"><span>© 2026 Het Joshi</span><span>Ahmedabad, India · Open to global opportunities</span><div class="footlinks"><a href="#work">Projects</a><a href="#top">Back to top ↑</a></div></footer>
+</body>
+</html>
